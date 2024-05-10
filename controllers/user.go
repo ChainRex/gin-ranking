@@ -38,7 +38,7 @@ func (u UserController) Register(c *gin.Context) {
 		return
 	}
 
-	ReturnSuccess(c, 200, "注册成功", nil, 0)
+	ReturnSuccess(c, 0, "注册成功", nil, 0)
 }
 
 type UserApi struct {
