@@ -143,7 +143,7 @@ func Recover(c *gin.Context) {
 				"code": 500,
 				"msg":  fmt.Sprintf("%v", err),
 			})
-
+			//终止后续接口调用，不加的话recover到异常后，还会继续执行接口里后续代码
 			c.Abort()
 		}
 	}()

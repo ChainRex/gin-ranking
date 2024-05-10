@@ -1,8 +1,11 @@
 package router
 
 import (
+	"github.com/CyberMidori/gin-ranking/config"
 	"github.com/CyberMidori/gin-ranking/controllers"
 	"github.com/CyberMidori/gin-ranking/pkg/logger"
+	"github.com/gin-contrib/sessions"
+	sessions_redis "github.com/gin-contrib/sessions/redis"
 	"github.com/gin-gonic/gin"
 )
 
@@ -12,22 +15,13 @@ func Router() *gin.Engine {
 	// 日志中间件
 	r.Use(gin.LoggerWithConfig(logger.LoggerToFile()))
 	r.Use(logger.Recover)
+	store, _ := sessions_redis.NewStore(10, "tcp", config.RedisAddress, "", []byte("secret"))
+	r.Use(sessions.Sessions("mysession", store))
 
 	user := r.Group("/user")
 	{
-		user.GET("/info/:id", controllers.UserController{}.GetUserById)
-
-		user.GET("/list", controllers.UserController{}.GetUserList)
-
-		user.POST("/add", controllers.UserController{}.AddUser)
-		user.POST("/update", controllers.UserController{}.UpdateUser)
-
-		user.POST("/delete", controllers.UserController{}.DeleteUser)
-	}
-
-	order := r.Group("/order")
-	{
-		order.POST("/list", controllers.OrderController{}.GetList)
+		user.POST("/register", controllers.UserController{}.Register)
+		user.POST("/login", controllers.UserController{}.Login)
 	}
 
 	return r
