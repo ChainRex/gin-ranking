@@ -1,0 +1,40 @@
+panic error time: 2024-05-10 14:35:20
+runtime error: integer divide by zero
+stacktrace from panic:goroutine 5 [running]:
+runtime/debug.Stack()
+	D:/software/Go/src/runtime/debug/stack.go:24 +0x81
+github.com/CyberMidori/gin-ranking/pkg/logger.Recover.func1()
+	D:/workspace/WEB3/gin-ranking/pkg/logger/logger.go:140 +0x349
+panic({0x133f240, 0x1696ba0})
+	D:/software/Go/src/runtime/panic.go:770 +0xf6
+github.com/CyberMidori/gin-ranking/controllers.UserController.GetList({}, 0x18a3688)
+	D:/workspace/WEB3/gin-ranking/controllers/user.go:20 +0x40
+github.com/gin-gonic/gin.(*Context).Next(...)
+	D:/workspace/Go/gopath/pkg/mod/github.com/gin-gonic/gin@v1.10.0/context.go:185
+github.com/CyberMidori/gin-ranking/pkg/logger.Recover(0x18a3688)
+	D:/workspace/WEB3/gin-ranking/pkg/logger/logger.go:150 +0x6e
+github.com/gin-gonic/gin.(*Context).Next(...)
+	D:/workspace/Go/gopath/pkg/mod/github.com/gin-gonic/gin@v1.10.0/context.go:185
+github.com/gin-gonic/gin.LoggerWithConfig.func1(0x18a3688)
+	D:/workspace/Go/gopath/pkg/mod/github.com/gin-gonic/gin@v1.10.0/logger.go:249 +0xad
+github.com/gin-gonic/gin.(*Context).Next(...)
+	D:/workspace/Go/gopath/pkg/mod/github.com/gin-gonic/gin@v1.10.0/context.go:185
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1(0x18a3688)
+	D:/workspace/Go/gopath/pkg/mod/github.com/gin-gonic/gin@v1.10.0/recovery.go:102 +0x8c
+github.com/gin-gonic/gin.(*Context).Next(...)
+	D:/workspace/Go/gopath/pkg/mod/github.com/gin-gonic/gin@v1.10.0/context.go:185
+github.com/gin-gonic/gin.LoggerWithConfig.func1(0x18a3688)
+	D:/workspace/Go/gopath/pkg/mod/github.com/gin-gonic/gin@v1.10.0/logger.go:249 +0xad
+github.com/gin-gonic/gin.(*Context).Next(...)
+	D:/workspace/Go/gopath/pkg/mod/github.com/gin-gonic/gin@v1.10.0/context.go:185
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0x18d7968, 0x18a3688)
+	D:/workspace/Go/gopath/pkg/mod/github.com/gin-gonic/gin@v1.10.0/gin.go:633 +0x760
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0x18d7968, {0x143a14c, 0x18a35e8}, 0x18a3408)
+	D:/workspace/Go/gopath/pkg/mod/github.com/gin-gonic/gin@v1.10.0/gin.go:589 +0x192
+net/http.serverHandler.ServeHTTP({0x18680a8}, {0x143a14c, 0x18a35e8}, 0x18a3408)
+	D:/software/Go/src/net/http/server.go:3137 +0x97
+net/http.(*conn).serve(0x1800060, {0x143a5b4, 0x18660f0})
+	D:/software/Go/src/net/http/server.go:2039 +0x629
+created by net/http.(*Server).Serve in goroutine 1
+	D:/software/Go/src/net/http/server.go:3285 +0x460
+
