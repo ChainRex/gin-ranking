@@ -1,8 +1,6 @@
 package router
 
 import (
-	"net/http"
-
 	"github.com/CyberMidori/gin-ranking/controllers"
 	"github.com/CyberMidori/gin-ranking/pkg/logger"
 	"github.com/gin-gonic/gin"
@@ -17,17 +15,14 @@ func Router() *gin.Engine {
 
 	user := r.Group("/user")
 	{
-		user.GET("/info/:id/:name", controllers.UserController{}.GetUserInfo)
+		user.GET("/info/:id", controllers.UserController{}.GetUserById)
 
-		user.POST("/list", controllers.UserController{}.GetList)
+		user.GET("/list", controllers.UserController{}.GetUserList)
 
-		user.PUT("/add", func(ctx *gin.Context) {
-			ctx.String(http.StatusOK, "Add User")
-		})
+		user.POST("/add", controllers.UserController{}.AddUser)
+		user.POST("/update", controllers.UserController{}.UpdateUser)
 
-		user.DELETE("/delete", func(ctx *gin.Context) {
-			ctx.String(http.StatusOK, "Delete User")
-		})
+		user.POST("/delete", controllers.UserController{}.DeleteUser)
 	}
 
 	order := r.Group("/order")

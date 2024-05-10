@@ -1,1 +1,7 @@
 2024-05-10 14:35:20 - [127.0.0.1] "POST /user/list HTTP/1.1 200 3.6146ms "PostmanRuntime/7.37.3" "
+2024-05-10 15:09:52 - [127.0.0.1] "GET /user/info/1 HTTP/1.1 200 3.9003ms "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0" "
+2024-05-10 15:19:54 - [127.0.0.1] "POST /user/add HTTP/1.1 200 68.1359ms "PostmanRuntime/7.37.3" "
+2024-05-10 15:26:19 - [127.0.0.1] "POST /user/update HTTP/1.1 200 97.3073ms "PostmanRuntime/7.37.3" "
+2024-05-10 15:30:24 - [127.0.0.1] "POST /user/delete HTTP/1.1 200 74.5137ms "PostmanRuntime/7.37.3" "
+2024-05-10 15:30:36 - [127.0.0.1] "POST /user/delete HTTP/1.1 200 1.0536ms "PostmanRuntime/7.37.3" "
+2024-05-10 15:37:45 - [127.0.0.1] "GET /user/list HTTP/1.1 200 1.5188ms "PostmanRuntime/7.37.3" "
