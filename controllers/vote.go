@@ -1,8 +1,10 @@
 package controllers
 
 import (
+	"encoding/json"
 	"strconv"
 
+	"github.com/CyberMidori/gin-ranking/cache"
 	"github.com/CyberMidori/gin-ranking/models"
 	"github.com/gin-gonic/gin"
 )
@@ -44,5 +46,24 @@ func (v VoteController) AddVote(c *gin.Context) {
 		return
 	}
 	models.UpdatePlayerScore(playerId)
+
+	// 更新redis
+	// 新的数据
+	player, _ = models.GetPlayerInfoById(playerId)
+	playerJson, _ := json.Marshal(player)
+	score := player.Score
+
+	// 递增前
+	pastPlayer := player
+	pastPlayer.Score = player.Score - 1
+	pastPlayerJson, _ := json.Marshal(pastPlayer)
+
+	var redisKey string
+	redisKey = "ranking:" + strconv.Itoa(player.Aid)
+	// 先删掉原来的
+	cache.Rdb.ZRem(cache.Rctx, redisKey, string(pastPlayerJson))
+	// 再添加新的
+	cache.Rdb.ZAdd(cache.Rctx, redisKey, cache.Zscore(playerJson, score))
+
 	ReturnSuccess(c, 0, "投票成功", rs, 1)
 }
